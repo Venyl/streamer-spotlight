@@ -7,7 +7,6 @@ function App() {
         data: streamers,
         isLoading,
         isError,
-        error,
     } = useQuery(['text'], getAllStreamers);
 
     return (
@@ -15,11 +14,7 @@ function App() {
             <aside>
                 {isLoading && <p>Loading...</p>}
                 {isError && <p>Error!</p>}
-                {streamers && (
-                    <p>
-                        <StreamerList streamers={streamers} />
-                    </p>
-                )}
+                {streamers && <StreamerList streamers={streamers} />}
             </aside>
 
             <form>
