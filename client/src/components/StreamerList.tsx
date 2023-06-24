@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import getAllStreamers from '../api/getAllStreamers';
 import { Link } from 'react-router-dom';
+import voteStreamer from '../api/voteStreamer';
 
 export default function StreamerList() {
     const {
@@ -23,8 +24,32 @@ export default function StreamerList() {
                             <p>{streamer.platform}</p>
                             <p>{streamer.description}</p>
                             <div>
-                                <span>Up: {streamer.upvotes}</span>
-                                <span>Down: {streamer.downvotes}</span>
+                                <span>
+                                    <button
+                                        onClick={() =>
+                                            voteStreamer(
+                                                'upvote',
+                                                streamer.name
+                                            )
+                                        }
+                                    >
+                                        +
+                                    </button>{' '}
+                                    {streamer.upvotes}
+                                </span>
+                                <span>
+                                    <button
+                                        onClick={() =>
+                                            voteStreamer(
+                                                'downvote',
+                                                streamer.name
+                                            )
+                                        }
+                                    >
+                                        -
+                                    </button>{' '}
+                                    {streamer.downvotes}
+                                </span>
                             </div>
                         </li>
                     ))}

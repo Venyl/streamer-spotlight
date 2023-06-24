@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import getStreamer from '../api/getStreamer';
+import voteStreamer from '../api/voteStreamer';
 
 export default function StreamerPage() {
     const { streamerName } = useParams();
@@ -29,8 +30,26 @@ export default function StreamerPage() {
                     <h2>{streamer.name}</h2>
                     <p>{streamer.description}</p>
                     <p>
-                        <span>Up: {streamer.upvotes}</span>
-                        <span>Down: {streamer.downvotes}</span>
+                        <span>
+                            <button
+                                onClick={() =>
+                                    voteStreamer('upvote', streamer.name)
+                                }
+                            >
+                                +
+                            </button>{' '}
+                            {streamer.upvotes}
+                        </span>
+                        <span>
+                            <button
+                                onClick={() =>
+                                    voteStreamer('downvote', streamer.name)
+                                }
+                            >
+                                -
+                            </button>{' '}
+                            {streamer.downvotes}
+                        </span>
                     </p>
                 </div>
             )}
