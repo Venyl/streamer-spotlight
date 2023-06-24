@@ -3,7 +3,7 @@ import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import socketio from 'socket.io';
-import Streamer, { IStreamer } from './models/Streamer';
+import Streamer, { IStreamerWithVotes } from './models/Streamer';
 
 const app = express();
 if (!process.env.MONGO_URI) {
@@ -18,9 +18,9 @@ app.get('/streamers', async (req: Request, res: Response) => {
 
 app.post(
     '/streamers',
-    async (req: Request<{}, {}, IStreamer>, res: Response) => {
+    async (req: Request<{}, {}, IStreamerWithVotes>, res: Response) => {
         const { name, platform, description } = req.body;
-        const newStreamer = new Streamer<IStreamer>({
+        const newStreamer = new Streamer<IStreamerWithVotes>({
             name,
             platform,
             description,

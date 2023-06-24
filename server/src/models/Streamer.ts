@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
 
-export interface IStreamer {
+export interface IStreamerWithVotes {
     name: string;
     platform: 'Twitch' | 'YouTube' | 'TikTok' | 'Kick' | 'Rumble';
     description: string;
@@ -11,7 +11,7 @@ export interface IStreamer {
     downvotes: number;
 }
 
-const StreamerSchema = new Schema<IStreamer>({
+const StreamerSchema = new Schema<IStreamerWithVotes>({
     name: ObjectId,
     platform: {
         type: String,
@@ -23,6 +23,6 @@ const StreamerSchema = new Schema<IStreamer>({
     downvotes: { type: Number, default: 0 },
 });
 
-const Streamer = mongoose.model<IStreamer>('Streamer', StreamerSchema);
+const Streamer = mongoose.model<IStreamerWithVotes>('Streamer', StreamerSchema);
 
 export default Streamer;

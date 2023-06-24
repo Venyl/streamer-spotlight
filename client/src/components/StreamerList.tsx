@@ -1,7 +1,7 @@
-import { IStreamer } from '../lib/types';
+import { IStreamerWithVotes } from '../lib/types';
 
 type Props = {
-    streamers: IStreamer[];
+    streamers: IStreamerWithVotes[];
 };
 
 export default function StreamerList({ streamers }: Props) {
