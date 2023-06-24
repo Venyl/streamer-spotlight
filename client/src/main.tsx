@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './index.css';
 import Layout from './Layout.tsx';
 import StreamerPage from './components/StreamerPage.tsx';
+import NoPage from './components/NoPage.tsx';
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
                             path="streamer/:streamerName"
                             element={<StreamerPage />}
                         />
+                        <Route path="*" element={<NoPage />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
