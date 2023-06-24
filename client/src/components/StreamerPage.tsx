@@ -10,9 +10,14 @@ export default function StreamerPage() {
         isLoading,
         isError,
         error,
-    } = useQuery(['streamer'], () => getStreamer(streamerName));
+    } = useQuery(['streamers', 'single'], () => getStreamer(streamerName));
 
-    console.log(error);
+    async function handleVote(
+        vote: 'upvote' | 'downvote',
+        streamerName: string
+    ) {
+        await voteStreamer(vote, streamerName);
+    }
 
     return (
         <>
@@ -33,7 +38,7 @@ export default function StreamerPage() {
                         <span>
                             <button
                                 onClick={() =>
-                                    voteStreamer('upvote', streamer.name)
+                                    handleVote('upvote', streamer.name)
                                 }
                             >
                                 +
@@ -43,7 +48,7 @@ export default function StreamerPage() {
                         <span>
                             <button
                                 onClick={() =>
-                                    voteStreamer('downvote', streamer.name)
+                                    handleVote('downvote', streamer.name)
                                 }
                             >
                                 -

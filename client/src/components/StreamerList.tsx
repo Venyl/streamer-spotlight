@@ -10,6 +10,13 @@ export default function StreamerList() {
         isError,
     } = useQuery(['streamers'], getAllStreamers);
 
+    async function handleVote(
+        vote: 'upvote' | 'downvote',
+        streamerName: string
+    ) {
+        await voteStreamer(vote, streamerName);
+    }
+
     return (
         <aside>
             {isLoading && <p>Loading...</p>}
@@ -27,10 +34,7 @@ export default function StreamerList() {
                                 <span>
                                     <button
                                         onClick={() =>
-                                            voteStreamer(
-                                                'upvote',
-                                                streamer.name
-                                            )
+                                            handleVote('upvote', streamer.name)
                                         }
                                     >
                                         +
@@ -40,7 +44,7 @@ export default function StreamerList() {
                                 <span>
                                     <button
                                         onClick={() =>
-                                            voteStreamer(
+                                            handleVote(
                                                 'downvote',
                                                 streamer.name
                                             )
