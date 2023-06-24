@@ -12,7 +12,7 @@ export interface IStreamerWithVotes {
 }
 
 const StreamerSchema = new Schema<IStreamerWithVotes>({
-    name: ObjectId,
+    name: { type: String, required: true, unique: true, index: true },
     platform: {
         type: String,
         enum: ['Twitch', 'YouTube', 'TikTok', 'Kick', 'Rumble'],
