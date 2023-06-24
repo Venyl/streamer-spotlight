@@ -70,6 +70,31 @@ app.get('/streamer/:streamerName', async (req: Request, res: Response) => {
     res.json(streamer);
 });
 
+app.put(
+    '/streamers/:streamerName/vote',
+    async (req: Request, res: Response) => {
+        const { vote, name } = req.body;
+
+        if (!vote || !name || !['upvote', 'downvote'].includes(vote)) {
+            res.sendStatus(400);
+            return;
+        }
+
+        const streamer = await Streamer.findOne({ name });
+        if (streamer) {
+            streamer[vote as keyof IStreamerWithVotes]++;
+            try {
+                await streamer.save();
+            } catch (err) {
+                console.error(err);
+                res.sendStatus(500);
+                return;
+            }
+            res.sendStatus(200);
+        }
+    }
+);
+
 const PORT = 5000;
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
