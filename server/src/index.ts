@@ -21,14 +21,42 @@ app.post(
     '/streamers',
     async (req: Request<{}, {}, IStreamerWithVotes>, res: Response) => {
         const { name, platform, description } = req.body;
-        const newStreamer = new Streamer<IStreamerWithVotes>({
-            name,
-            platform,
-            description,
-            upvotes: 0,
-            downvotes: 0,
+        const resData = {
+            success: true,
+            issues: [] as string[],
+        };
+
+        const requiredFields = ['name', 'platform', 'description'];
+        requiredFields.forEach(field => {
+            if (!req.body[field as keyof IStreamerWithVotes]) {
+                resData.success = false;
+                resData.issues.push(`${field} is required`);
+            }
         });
-        await newStreamer.save();
+
+        if (await Streamer.findOne({ name })) {
+            resData.success = false;
+            resData.issues.push('Streamer already exists');
+        }
+
+        let newStreamer;
+        if (resData.success) {
+            newStreamer = new Streamer<IStreamerWithVotes>({
+                name,
+                platform,
+                description,
+                upvotes: 0,
+                downvotes: 0,
+            });
+        }
+
+        try {
+            await newStreamer?.save();
+        } catch (err) {
+            console.error(err);
+        } finally {
+            res.json(resData);
+        }
     }
 );
 
