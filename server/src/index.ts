@@ -1,14 +1,24 @@
 import 'dotenv/config';
-import express, { Request, Response } from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import socketio from 'socket.io';
-import Streamer, { IStreamerWithVotes } from './models/Streamer';
 
-const app = express();
 if (!process.env.MONGO_URI) {
     throw new Error('MONGO_URI is not defined');
 }
+
+import express, { Request, Response } from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import { createServer } from 'http';
+import { Server } from 'socket.io';
+import Streamer, { IStreamerWithVotes } from './models/Streamer';
+
+const app = express();
+const server = createServer(app);
+const io = new Server(server, {
+    cors: {
+        methods: ['GET', 'POST', 'PUT'],
+        origin: 'http://localhost:5173',
+    },
+});
 
 app.use(cors());
 app.use(express.json());
@@ -55,6 +65,7 @@ app.post(
         } catch (err) {
             console.error(err);
         } finally {
+            io.emit('invalidate');
             res.json(resData);
         }
     }
@@ -73,8 +84,6 @@ app.get('/streamer/:streamerName', async (req: Request, res: Response) => {
 app.put(
     '/streamers/:streamerName/vote',
     async (req: Request, res: Response) => {
-        console.log(req.body);
-
         const { vote } = req.body;
         const name = req.params.streamerName;
 
@@ -93,6 +102,7 @@ app.put(
                 res.sendStatus(500);
                 return;
             }
+            io.emit('invalidate');
             res.sendStatus(200);
         }
     }
@@ -102,7 +112,7 @@ const PORT = 5000;
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
     console.log('Connected to MongoDB');
-    app.listen(PORT, () => {
+    server.listen(PORT, () => {
         console.log(`Server running on port ${PORT}`);
     });
 });
