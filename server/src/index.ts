@@ -9,7 +9,6 @@ const app = express();
 if (!process.env.MONGO_URI) {
     throw new Error('MONGO_URI is not defined');
 }
-const db = mongoose.connect(process.env.MONGO_URI);
 
 app.use(cors());
 
@@ -32,4 +31,11 @@ app.post(
     }
 );
 
-app.listen(5000);
+const PORT = 5000;
+
+mongoose.connect(process.env.MONGO_URI).then(() => {
+    console.log('Connected to MongoDB');
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+});
