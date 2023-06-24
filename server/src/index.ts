@@ -5,7 +5,10 @@ import cors from 'cors';
 import socketio from 'socket.io';
 
 const app = express();
-const db = mongoose.connect(process.env.MONGO_URI!);
+if (!process.env.MONGO_URI) {
+    throw new Error('MONGO_URI is not defined');
+}
+const db = mongoose.connect(process.env.MONGO_URI);
 
 app.use(cors());
 
