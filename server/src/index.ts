@@ -11,6 +11,7 @@ if (!process.env.MONGO_URI) {
 }
 
 app.use(cors());
+app.use(express.json());
 
 app.get('/streamers', async (req: Request, res: Response) => {
     res.json(await Streamer.find());
