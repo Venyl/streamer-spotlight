@@ -3,6 +3,8 @@ import getAllStreamers from './api/getAllStreamers';
 import StreamerList from './components/StreamerList';
 import addStreamer from './api/addStreamer';
 import { IStreamer } from './lib/types';
+import { useState } from 'react';
+import IssueList from './components/IssueList';
 
 function App() {
     const {
@@ -11,11 +13,16 @@ function App() {
         isError,
     } = useQuery(['text'], getAllStreamers);
 
+    const [issues, setIssues] = useState<string[]>([]);
+
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
-        const data = Object.fromEntries(formData) as unknown as IStreamer;
-        await addStreamer(data);
+        const streamerData = Object.fromEntries(
+            formData
+        ) as unknown as IStreamer;
+        const resData = await addStreamer(streamerData);
+        setIssues(resData.issues);
     }
 
     return (
@@ -26,6 +33,7 @@ function App() {
                 {streamers && <StreamerList streamers={streamers} />}
             </aside>
 
+            <IssueList issues={issues} />
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Name</label>
                 <input type="text" name="name" id="name" required />
