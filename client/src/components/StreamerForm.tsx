@@ -60,8 +60,19 @@ export default function StreamerForm({ setIssues }: Props) {
                 <option>Rumble</option>
             </select>
 
-            <label htmlFor="description">Name</label>
-            <input type="text" name="description" id="description" required />
+            <label htmlFor="description">Description</label>
+            <input
+                type="text"
+                name="description"
+                id="description"
+                required
+                onChange={e =>
+                    setStreamer(streamer => ({
+                        ...streamer,
+                        description: e.target.value,
+                    }))
+                }
+            />
 
             <button>Add</button>
         </form>
