@@ -60,6 +60,16 @@ app.post(
     }
 );
 
+app.get('/streamer/:streamerName', async (req: Request, res: Response) => {
+    const name = req.params.streamerName;
+    const streamer = await Streamer.findOne({ name });
+    if (!streamer) {
+        res.sendStatus(400);
+        return;
+    }
+    res.json(streamer);
+});
+
 const PORT = 5000;
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
