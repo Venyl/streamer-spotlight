@@ -7,7 +7,7 @@ export default function StreamerList() {
         data: streamers,
         isLoading,
         isError,
-    } = useQuery(['text'], getAllStreamers);
+    } = useQuery(['streamers'], getAllStreamers);
 
     return (
         <aside>

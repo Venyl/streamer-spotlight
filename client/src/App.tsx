@@ -9,7 +9,6 @@ function App() {
     return (
         <main>
             <StreamerList />
-
             <IssueList issues={issues} />
             <StreamerForm setIssues={setIssues} />
         </main>
