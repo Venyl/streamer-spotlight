@@ -1,13 +1,16 @@
-export default async function voteStreamer(streamerName: string) {
+export default async function voteStreamer(
+    vote: 'downvote' | 'upvote',
+    streamerName: string
+) {
     if (!streamerName) {
         throw Error('Streamer name not provided');
     }
     const options = {
         method: 'PUT',
         headers: {
-            'Content-Type': 'text/plain',
+            'Content-Type': 'application/json',
         },
-        body: streamerName,
+        body: JSON.stringify({ vote }),
     };
     const data = await fetch(
         `http://localhost:5000/streamers/${streamerName}/vote`,

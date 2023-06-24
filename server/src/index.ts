@@ -73,7 +73,10 @@ app.get('/streamer/:streamerName', async (req: Request, res: Response) => {
 app.put(
     '/streamers/:streamerName/vote',
     async (req: Request, res: Response) => {
-        const { vote, name } = req.body;
+        console.log(req.body);
+
+        const { vote } = req.body;
+        const name = req.params.streamerName;
 
         if (!vote || !name || !['upvote', 'downvote'].includes(vote)) {
             res.sendStatus(400);
@@ -82,7 +85,7 @@ app.put(
 
         const streamer = await Streamer.findOne({ name });
         if (streamer) {
-            streamer[vote as keyof IStreamerWithVotes]++;
+            streamer[(vote + 's') as keyof IStreamerWithVotes]++;
             try {
                 await streamer.save();
             } catch (err) {
