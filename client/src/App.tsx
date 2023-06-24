@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 function App() {
     const { data, isLoading, isError, error } = useQuery(['text'], () =>
-        fetch('http://localhost:50100/').then(res => res.text())
+        fetch('http://localhost:5000/').then(res => res.text())
     );
 
     return (
