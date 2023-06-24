@@ -14,7 +14,7 @@ function App() {
         <main>
             <aside>
                 {isLoading && <p>Loading...</p>}
-                {isError && <p>Error! {error as string}</p>}
+                {isError && <p>Error!</p>}
                 {streamers && (
                     <p>
                         <StreamerList streamers={streamers} />
