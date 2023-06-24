@@ -34,7 +34,7 @@ app.post(
             }
         });
 
-        if (await Streamer.findOne({ name })) {
+        if (await Streamer.exists({ name })) {
             resData.success = false;
             resData.issues.push('Streamer already exists');
         }
