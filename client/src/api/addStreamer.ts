@@ -9,6 +9,6 @@ export default async function addStreamer(streamer: IStreamer) {
         body: JSON.stringify(streamer),
     };
     const res = await fetch('http://localhost:5000/streamers', options);
-    const data = await res.json();
+    const data = (await res.json()) as { success: true; issues: string[] };
     return data;
 }
