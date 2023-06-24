@@ -9,14 +9,14 @@ export default function StreamerPage() {
         isLoading,
         isError,
         error,
-    } = useQuery(['streamers'], () => getStreamer(streamerName));
+    } = useQuery(['streamer'], () => getStreamer(streamerName));
 
     console.log(error);
 
     return (
         <>
             {isLoading && <p>Loading...</p>}
-            {isError && <p>Error!</p>}
+            {isError && <p>Error! {error instanceof Error && error.message}</p>}
             {streamer && (
                 <div>
                     <div>
