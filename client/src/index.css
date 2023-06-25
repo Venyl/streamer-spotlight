@@ -77,6 +77,7 @@ textarea {
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
+    background-color: rgb(100 100 100 / 0.1);
     border-color: rgb(var(--accent-2));
 }
 
