@@ -3,10 +3,10 @@ import StreamerForm from './StreamerForm';
 
 function Home() {
     return (
-        <>
-            <StreamerList />
+        <div className="home-container">
             <StreamerForm />
-        </>
+            <StreamerList />
+        </div>
     );
 }
 
