@@ -91,7 +91,7 @@ form {
 
 .wrapper {
     flex-grow: 1;
-    max-width: 48rem;
+    max-width: 40rem;
     display: grid;
     gap: 1rem;
 }
