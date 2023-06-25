@@ -91,7 +91,7 @@ export default function StreamerForm() {
                 />
             </div>
 
-            <button type="submit">Add</button>
+            <button type="submit">+ Add</button>
         </form>
     );
 }
