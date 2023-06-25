@@ -78,7 +78,7 @@ export default function StreamerForm() {
                 <textarea
                     name="description"
                     id="description"
-                    placeholder="Asmongold is an American Twitch streamer..., YouTuber, content creator, internet celebrity, who is recognized for his World of Warcraft gameplay and knowledge of the game, humorous commentary while playing various MMORPGs, and his ability to entertain and engage with his audience."
+                    placeholder="Asmongold is an American Twitch streamer..."
                     rows={5}
                     required
                     value={streamer.description}
