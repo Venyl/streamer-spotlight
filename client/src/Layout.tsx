@@ -31,7 +31,9 @@ export default function Layout() {
                     </ul>
                 </nav>
             </header>
-            <Outlet />
+            <main>
+                <Outlet />
+            </main>
         </>
     );
 }

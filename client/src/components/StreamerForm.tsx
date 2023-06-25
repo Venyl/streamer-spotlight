@@ -1,17 +1,16 @@
 import { useState } from 'react';
 import addStreamer from '../api/addStreamer';
 import { IStreamer } from '../lib/types';
+import IssueList from './IssueList';
 
-type Props = {
-    setIssues: React.Dispatch<React.SetStateAction<string[]>>;
-};
-
-export default function StreamerForm({ setIssues }: Props) {
+export default function StreamerForm() {
     const [streamer, setStreamer] = useState<IStreamer>({
         name: '',
         platform: 'Twitch',
         description: '',
     });
+
+    const [issues, setIssues] = useState<string[]>([]);
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -22,6 +21,8 @@ export default function StreamerForm({ setIssues }: Props) {
 
     return (
         <form onSubmit={handleSubmit}>
+            <IssueList issues={issues} />
+
             <label htmlFor="name">Name</label>
             <input
                 type="text"
