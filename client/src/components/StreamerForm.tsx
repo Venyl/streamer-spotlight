@@ -28,61 +28,68 @@ export default function StreamerForm() {
 
             <h1 className="form-title">Add a streamer</h1>
 
-            <label htmlFor="name">Name</label>
-            <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Asmongold"
-                required
-                value={streamer.name}
-                onChange={e =>
-                    setStreamer(streamer => ({
-                        ...streamer,
-                        name: e.target.value,
-                    }))
-                }
-            />
+            <div className="input-container">
+                <label htmlFor="name">Name</label>
+                <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Asmongold"
+                    required
+                    value={streamer.name}
+                    onChange={e =>
+                        setStreamer(streamer => ({
+                            ...streamer,
+                            name: e.target.value,
+                        }))
+                    }
+                />
+            </div>
 
-            <label htmlFor="platform">Platform</label>
-            <select
-                name="platform"
-                id="platform"
-                required
-                value={streamer.platform}
-                onChange={e =>
-                    setStreamer(streamer => ({
-                        ...streamer,
-                        platform: e.target.value as
-                            | 'Twitch'
-                            | 'YouTube'
-                            | 'TikTok'
-                            | 'Kick'
-                            | 'Rumble',
-                    }))
-                }
-            >
-                <option>Twitch</option>
-                <option>YouTube</option>
-                <option>TikTok</option>
-                <option>Kick</option>
-                <option>Rumble</option>
-            </select>
+            <div className="input-container">
+                <label htmlFor="platform">Platform</label>
+                <select
+                    name="platform"
+                    id="platform"
+                    required
+                    value={streamer.platform}
+                    onChange={e =>
+                        setStreamer(streamer => ({
+                            ...streamer,
+                            platform: e.target.value as
+                                | 'Twitch'
+                                | 'YouTube'
+                                | 'TikTok'
+                                | 'Kick'
+                                | 'Rumble',
+                        }))
+                    }
+                >
+                    <option selected>Twitch</option>
+                    <option>YouTube</option>
+                    <option>TikTok</option>
+                    <option>Kick</option>
+                    <option>Rumble</option>
+                </select>
+            </div>
 
-            <label htmlFor="description">Description</label>
-            <textarea
-                name="description"
-                id="description"
-                placeholder="Asmongold, also known as ZackRawrr, is an American Twitch streamer, YouTuber, content creator, internet celebrity, who is recognized for his World of Warcraft gameplay and knowledge of the game, humorous commentary while playing various MMORPGs, and his ability to entertain and engage with his audience."
-                required
-                value={streamer.description}
-                onChange={e =>
-                    setStreamer(streamer => ({
-                        ...streamer,
-                        description: e.target.value,
-                    }))
-                }
-            />
+            <div className="input-container">
+                <label htmlFor="description">Description</label>
+                <textarea
+                    name="description"
+                    id="description"
+                    placeholder="Asmongold is an American Twitch streamer..., YouTuber, content creator, internet celebrity, who is recognized for his World of Warcraft gameplay and knowledge of the game, humorous commentary while playing various MMORPGs, and his ability to entertain and engage with his audience."
+                    rows={5}
+                    required
+                    value={streamer.description}
+                    onChange={e =>
+                        setStreamer(streamer => ({
+                            ...streamer,
+                            description: e.target.value,
+                        }))
+                    }
+                />
+            </div>
 
             <button>Add</button>
         </form>
