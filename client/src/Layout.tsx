@@ -1,7 +1,8 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { socket } from './socket';
+
+import { socket } from './lib/socket';
 
 export default function Layout() {
     const queryClient = useQueryClient();

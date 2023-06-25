@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './components/Home.tsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './index.css';
+
+import App from './components/Home.tsx';
 import Layout from './Layout.tsx';
 import StreamerPage from './components/StreamerPage.tsx';
 import NoPage from './components/NoPage.tsx';
+
+import './index.css';
+import './reset.css';
 
 const queryClient = new QueryClient();
 

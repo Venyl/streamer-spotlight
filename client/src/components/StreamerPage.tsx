@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+
 import getStreamer from '../api/getStreamer';
 import voteStreamer from '../api/voteStreamer';
 

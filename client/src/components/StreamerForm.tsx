@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import addStreamer from '../api/addStreamer';
+
 import { IStreamer } from '../lib/types';
+
+import addStreamer from '../api/addStreamer';
+
 import IssueList from './IssueList';
 
 export default function StreamerForm() {
