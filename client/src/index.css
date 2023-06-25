@@ -24,7 +24,7 @@ header {
 main {
     margin: 2rem auto;
     padding: 1rem;
-    width: clamp(20rem, 50vw, 80rem);
+    width: clamp(20rem, 50vw, 64rem);
 }
 
 h1,
@@ -50,4 +50,69 @@ nav {
     color: rgb(var(--bg-1));
     padding: 0.5rem max(1rem, 5vw);
     font-size: 1.5rem;
+}
+
+input,
+select,
+textarea {
+    color: inherit;
+    font: inherit;
+    background-color: inherit;
+    outline: none;
+    border: none;
+    border: 1px solid rgb(var(--accent-1));
+    padding: 0.5em;
+    max-width: 48rem;
+}
+
+option {
+    background-color: rgb(var(--bg-2));
+}
+
+textarea {
+    resize: vertical;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    border-color: rgb(var(--accent-2));
+}
+
+form {
+    background-color: rgb(var(--bg-2));
+    border-radius: 0.5em;
+    padding: 1rem;
+    width: clamp(18rem, 50vw, 64rem);
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    flex-grow: 1;
+    max-width: 48rem;
+    display: grid;
+    gap: 1rem;
+}
+
+button[type='submit'] {
+    font-weight: 600;
+    width: clamp(6rem, 50%, 12rem);
+    border: none;
+    background-color: rgb(var(--button-1));
+    color: rgb(var(--bg-1));
+    padding: 0.25em;
+    margin: 0 auto;
+}
+
+button[type='submit']:hover {
+    background-color: rgb(var(--button-1) / 0.8);
+}
+
+.form-title {
+    margin-bottom: 1rem;
+}
+
+.input-container {
+    display: grid;
 }
