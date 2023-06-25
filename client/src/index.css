@@ -1,0 +1,45 @@
+:root {
+    --text: 224, 235, 227;
+    --bg-1: 8, 10, 12;
+    --bg-2: 16, 20, 24;
+    --button-1: 13, 204, 242;
+    --button-2: 222, 224, 237;
+    --accent-1: 217, 38, 148;
+    --accent-2: 38, 217, 116;
+}
+
+body {
+    font-family: Quicksand, sans-serif;
+    background-color: rgb(var(--bg-1));
+    color: rgb(var(--text));
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: rgb(var(--accent-1));
+}
+
+main {
+    margin: 2rem auto;
+    padding: 1rem;
+    width: clamp(20rem, 50vw, 80rem);
+}
+
+h1,
+h2,
+h3 {
+    font-family: Monsterrat, sans-serif;
+    font-weight: 800;
+}
+
+a {
+    color: inherit;
+    text-underline-offset: 0.1em;
+    text-decoration-thickness: 0.05em;
+}
+
+ul {
+    list-style-type: none;
+}
