@@ -18,8 +18,6 @@ body {
     min-height: 100vh;
     min-height: 100svh;
     text-rendering: optimizeSpeed;
-    font-family: system-ui, -apple-system, sans-serif;
-    -webkit-font-smoothing: antialiased;
     line-height: 1.5;
 }
 
