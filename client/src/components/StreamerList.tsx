@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import getAllStreamers from '../api/getAllStreamers';
 import { Link } from 'react-router-dom';
+
+import getAllStreamers from '../api/getAllStreamers';
 import voteStreamer from '../api/voteStreamer';
 
 export default function StreamerList() {
