@@ -26,12 +26,16 @@ export default function StreamerForm() {
         <form onSubmit={handleSubmit}>
             <IssueList issues={issues} />
 
+            <h1 className="form-title">Add a streamer</h1>
+
             <label htmlFor="name">Name</label>
             <input
                 type="text"
                 name="name"
                 id="name"
+                placeholder="Asmongold"
                 required
+                value={streamer.name}
                 onChange={e =>
                     setStreamer(streamer => ({
                         ...streamer,
@@ -45,6 +49,7 @@ export default function StreamerForm() {
                 name="platform"
                 id="platform"
                 required
+                value={streamer.platform}
                 onChange={e =>
                     setStreamer(streamer => ({
                         ...streamer,
@@ -65,11 +70,12 @@ export default function StreamerForm() {
             </select>
 
             <label htmlFor="description">Description</label>
-            <input
-                type="text"
+            <textarea
                 name="description"
                 id="description"
+                placeholder="Asmongold, also known as ZackRawrr, is an American Twitch streamer, YouTuber, content creator, internet celebrity, who is recognized for his World of Warcraft gameplay and knowledge of the game, humorous commentary while playing various MMORPGs, and his ability to entertain and engage with his audience."
                 required
+                value={streamer.description}
                 onChange={e =>
                     setStreamer(streamer => ({
                         ...streamer,
