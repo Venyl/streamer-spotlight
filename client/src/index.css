@@ -36,8 +36,7 @@ h3 {
 
 a {
     color: inherit;
-    text-underline-offset: 0.1em;
-    text-decoration-thickness: 0.05em;
+    text-decoration: none;
 }
 
 ul {
@@ -50,6 +49,17 @@ nav {
     color: rgb(var(--bg-1));
     padding: 0.5rem max(1rem, 5vw);
     font-size: 1.5rem;
+}
+
+.nav-list {
+    display: grid;
+    place-items: center;
+    grid-template-columns: auto 1fr;
+}
+
+.nav-list > li:last-child {
+    margin-left: auto;
+    font-size: 1.125rem;
 }
 
 input,

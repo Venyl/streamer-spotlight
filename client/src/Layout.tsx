@@ -20,7 +20,10 @@ export default function Layout() {
         <>
             <header>
                 <nav>
-                    <ul>
+                    <ul className="nav-list">
+                        <li>
+                            <Link to="/">StreamerSpotlight</Link>
+                        </li>
                         <li>
                             <Link to="/">Home</Link>
                         </li>
