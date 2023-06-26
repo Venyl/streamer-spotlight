@@ -146,6 +146,12 @@ button[type='submit']:hover {
     gap: 0.25rem;
 }
 
+.section-title {
+    margin-block: 2rem 1rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
 .streamer-list {
     display: grid;
     /* place-content: center; */
@@ -154,16 +160,29 @@ button[type='submit']:hover {
 }
 
 .streamer-card {
-    padding: 1rem;
     display: grid;
     grid-template-columns: auto auto 1fr auto;
     grid-template-rows: auto 1fr auto;
+    gap: 0.25rem;
+    padding: 1rem;
 }
 
 .streamer-info {
     grid-column: span 2;
     /* display: grid;
     place-items: center; */
+}
+
+.streamer-name {
+    font-size: 1.375rem;
+    color: rgb(var(--accent-1));
+}
+
+.streamer-platform {
+    display: grid;
+    /* color: rgb(var(--accent-1)); */
+    place-content: center;
+    font-size: 1.25rem;
 }
 
 .streamer-desc {
@@ -181,4 +200,32 @@ button[type='submit']:hover {
 .streamer-card > div {
     display: flex;
     gap: 1rem;
+}
+
+.streamer-votes button {
+    border: none;
+    color: rgb(var(--bg-1));
+    padding: 0.25em;
+    border-radius: 50%;
+}
+
+.streamer-votes span {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.upvote-btn {
+    background-color: rgb(var(--accent-2));
+}
+
+.downvote-btn {
+    background-color: rgb(223 78 78);
+}
+
+.upvote-btn:hover {
+    background-color: rgb(var(--accent-2) / 80%);
+}
+
+.downvote-btn:hover {
+    background-color: rgb(223 78 78 / 80%);
 }

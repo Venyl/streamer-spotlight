@@ -12,8 +12,8 @@ export default function StreamerList() {
     } = useQuery(['streamers'], getAllStreamers);
 
     return (
-        <article>
-            <h2>Streamers</h2>
+        <section>
+            <h2 className="section-title">Streamers</h2>
 
             {isLoading && <p>Loading...</p>}
             {isError && <p>Error!</p>}
@@ -24,6 +24,6 @@ export default function StreamerList() {
                     ))}
                 </ul>
             )}
-        </article>
+        </section>
     );
 }
