@@ -11,6 +11,10 @@
 body {
     font-family: Quicksand, sans-serif;
     background-color: rgb(var(--bg-1));
+    background-image: url(/bg.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: repeat;
     color: rgb(var(--text));
 }
 
@@ -18,7 +22,11 @@ header {
     position: sticky;
     top: 0;
     z-index: 1;
-    background-color: rgb(var(--accent-1));
+    background-image: linear-gradient(
+        rgb(var(--bg-1) / 0.3) 60%,
+        rgb(var(--accent-1) / 0.05)
+    );
+    backdrop-filter: blur(5px);
 }
 
 main {
@@ -46,7 +54,6 @@ ul {
 nav {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    color: rgb(var(--bg-1));
     padding: 0.5rem max(1rem, 5vw);
     font-size: 1.5rem;
 }
@@ -91,8 +98,12 @@ textarea:focus-visible {
     border-color: rgb(var(--accent-2));
 }
 
+.glass-bg {
+    background-color: rgb(150 150 150 / 0.02);
+    backdrop-filter: blur(2px);
+}
+
 form {
-    background-color: rgb(var(--bg-2));
     border-radius: 0.5em;
     padding: 1rem;
     width: clamp(18rem, 50vw, 64rem);

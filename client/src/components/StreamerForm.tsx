@@ -23,7 +23,7 @@ export default function StreamerForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="glass-bg" onSubmit={handleSubmit}>
             <div className="wrapper">
                 <IssueList issues={issues} />
                 <h1 className="form-title">Add a streamer</h1>

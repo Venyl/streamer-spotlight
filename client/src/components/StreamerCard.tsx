@@ -15,7 +15,7 @@ export default function StreamerCard({ streamer }: Props) {
     }
 
     return (
-        <li className="streamer-card">
+        <li className="streamer-card glass-bg">
             <Link to={`/streamer/${streamer.name}`}>
                 <h3>{streamer.name}</h3>
             </Link>
