@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { Icon } from '@iconify/react';
 
 import getStreamer from '../api/getStreamer';
 import voteStreamer from '../api/voteStreamer';
@@ -13,6 +14,8 @@ export default function StreamerPage() {
         error,
     } = useQuery(['streamers', 'single'], () => getStreamer(streamerName));
 
+    const icon = `tabler:brand-${streamer?.platform.toLowerCase()}`;
+
     async function handleVote(
         vote: 'upvote' | 'downvote',
         streamerName: string
@@ -25,39 +28,48 @@ export default function StreamerPage() {
             {isLoading && <p>Loading...</p>}
             {isError && <p>Error! {error instanceof Error && error.message}</p>}
             {streamer && (
-                <div>
-                    <div>
+                <section className="streamer glass-bg">
+                    <div className="streamer-img-wrapper">
                         <img
                             src="https://static-cdn.jtvnw.net/jtv_user_pictures/asmongold-profile_image-f7ddcbd0332f5d28-300x300.png"
                             alt="the profile picture of this streamer"
                         />
                     </div>
 
-                    <h2>{streamer.name}</h2>
-                    <p>{streamer.description}</p>
-                    <p>
-                        <span>
-                            <button
-                                onClick={() =>
-                                    handleVote('upvote', streamer.name)
-                                }
-                            >
-                                +
-                            </button>{' '}
-                            {streamer.upvotes}
+                    <div className="streamer-text">
+                        <span className="streamer-info">
+                            <h2 className="streamer-name">{streamer.name}</h2>
+                            <p className="streamer-platform">
+                                <Icon icon={icon} />
+                            </p>
                         </span>
-                        <span>
-                            <button
-                                onClick={() =>
-                                    handleVote('downvote', streamer.name)
-                                }
-                            >
-                                -
-                            </button>{' '}
-                            {streamer.downvotes}
-                        </span>
-                    </p>
-                </div>
+                        <p className="streamer-desc">{streamer.description}</p>
+                        <p className="streamer-votes">
+                            <span>
+                                <button
+                                    className="upvote-btn"
+                                    onClick={() =>
+                                        handleVote('upvote', streamer.name)
+                                    }
+                                >
+                                    <Icon icon="tabler:arrow-up" />
+                                </button>{' '}
+                                {streamer.upvotes}
+                            </span>
+                            <span>
+                                <button
+                                    className="downvote-btn"
+                                    onClick={() =>
+                                        handleVote('downvote', streamer.name)
+                                    }
+                                >
+                                    <Icon icon="tabler:arrow-down" />
+                                </button>{' '}
+                                {streamer.downvotes}
+                            </span>
+                        </p>
+                    </div>
+                </section>
             )}
         </>
     );
