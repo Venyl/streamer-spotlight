@@ -69,6 +69,18 @@ nav {
     font-size: 1.125rem;
 }
 
+form {
+    border-radius: 0.5em;
+    padding: 1rem;
+    width: clamp(18rem, 50vw, 100%);
+    display: flex;
+    justify-content: center;
+}
+
+label {
+    opacity: 0.8;
+}
+
 input,
 select,
 textarea {
@@ -100,15 +112,7 @@ textarea:focus-visible {
 
 .glass-bg {
     background-color: rgb(150 150 150 / 0.02);
-    backdrop-filter: blur(2px);
-}
-
-form {
-    border-radius: 0.5em;
-    padding: 1rem;
-    width: clamp(18rem, 50vw, 64rem);
-    display: flex;
-    justify-content: center;
+    backdrop-filter: blur(3px);
 }
 
 .wrapper {
@@ -139,4 +143,42 @@ button[type='submit']:hover {
 
 .input-container {
     display: grid;
+    gap: 0.25rem;
+}
+
+.streamer-list {
+    display: grid;
+    /* place-content: center; */
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1rem;
+}
+
+.streamer-card {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    grid-template-rows: auto 1fr auto;
+}
+
+.streamer-info {
+    grid-column: span 2;
+    /* display: grid;
+    place-items: center; */
+}
+
+.streamer-desc {
+    grid-row: 2;
+    grid-column: span 4;
+}
+
+.streamer-votes {
+    grid-row: 3;
+    grid-column: span 4;
+    width: max-content;
+    margin-left: auto;
+}
+
+.streamer-card > div {
+    display: flex;
+    gap: 1rem;
 }

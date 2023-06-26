@@ -16,12 +16,14 @@ export default function StreamerCard({ streamer }: Props) {
 
     return (
         <li className="streamer-card glass-bg">
-            <Link to={`/streamer/${streamer.name}`}>
-                <h3>{streamer.name}</h3>
-            </Link>
-            <p className="streamer-platform">{streamer.platform}</p>
+            <div className="streamer-info">
+                <Link to={`/streamer/${streamer.name}`}>
+                    <h3>{streamer.name}</h3>
+                </Link>
+                <p className="streamer-platform">{streamer.platform}</p>
+            </div>
             <p className="streamer-desc">{streamer.description}</p>
-            <div>
+            <div className="streamer-votes">
                 <span>
                     <button
                         className="upvote-btn"
