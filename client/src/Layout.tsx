@@ -9,14 +9,9 @@ export default function Layout() {
 
     useEffect(() => {
         socket.on('invalidate', async () => {
-            console.log('invalidating');
             await queryClient.invalidateQueries(['streamers']);
-            console.log('invalidated');
         });
-        console.log(
-            'listening for invalidation:',
-            socket.hasListeners('invalidate')
-        );
+
         return () => {
             socket.off('invalidate');
         };
