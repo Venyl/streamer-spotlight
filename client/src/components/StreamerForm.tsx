@@ -63,7 +63,7 @@ export default function StreamerForm() {
                             }))
                         }
                     >
-                        <option selected>Twitch</option>
+                        <option>Twitch</option>
                         <option>YouTube</option>
                         <option>TikTok</option>
                         <option>Kick</option>
