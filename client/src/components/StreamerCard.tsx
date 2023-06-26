@@ -15,6 +15,14 @@ export default function StreamerCard({ streamer }: Props) {
         await voteStreamer(vote, streamerName);
     }
 
+    const trimmedDesc =
+        streamer.description.length > 100
+            ? streamer.description.substring(
+                  0,
+                  streamer.description.indexOf(' ', 100)
+              ) + '...'
+            : streamer.description;
+
     const icon = `tabler:brand-${streamer.platform.toLowerCase()}`;
 
     return (
@@ -28,7 +36,7 @@ export default function StreamerCard({ streamer }: Props) {
                 </p>
             </div>
 
-            <p className="streamer-desc">{streamer.description}</p>
+            <p className="streamer-desc">{trimmedDesc}</p>
 
             <div className="streamer-votes">
                 <span>
