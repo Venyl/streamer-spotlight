@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
+import { Icon } from '@iconify/react';
 
 import { IStreamerWithVotes } from '../lib/types';
 
 import voteStreamer from '../api/voteStreamer';
-import { Icon } from '@iconify/react';
 
 type Props = { streamer: IStreamerWithVotes };
 
@@ -16,7 +16,6 @@ export default function StreamerCard({ streamer }: Props) {
     }
 
     const icon = `tabler:brand-${streamer.platform.toLowerCase()}`;
-    console.log(icon);
 
     return (
         <li className="streamer-card glass-bg">
